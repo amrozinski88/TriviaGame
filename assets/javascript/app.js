@@ -46,34 +46,104 @@ var questionFour = {
 }
 
 var questionFive = {
-    Q :"What Kind Of Ship Does Luke Fly?",
-     answers : {
-         A: "Y-Wing",
-         B: "V-Wing",
-         C: "A-Wing",
-         D: "X-Wing",
-     },
-     answer: "D"
-     }
+    Q: "What Kind Of Ship Does Luke Fly?",
+    answers: {
+        A: "Y-Wing",
+        B: "V-Wing",
+        C: "A-Wing",
+        D: "X-Wing",
+    },
+    answer: "D"
+}
 
+var timeLeft = 30;
 
-var questions = [questionOne,questionTwo,questionThree,questionFour,questionFive];
+var intervalID 
+
+var questions = [questionOne, questionTwo, questionThree, questionFour, questionFive];
 
 var questionNumber = 0;
 
+var correctAnswers = 0;
 
+var incorrectAnswers = 0;
 
+var currentQuestion = 0;
 
-function getQuestion (questionNum){
+var unansweredQuestions = 0;
+
+function getQuestion(questionNum) {
     $("#question").text(questions[questionNum].Q)
     $("#aButton").text(questions[questionNum].answers.A)
     $("#bButton").text(questions[questionNum].answers.B)
     $("#cButton").text(questions[questionNum].answers.C)
     $("#dButton").text(questions[questionNum].answers.D)
+
+}
+function transition(text){
+    clearInterval(intervalID)
+    timeLeft = 30;
+    currentQuestion++ ;
+    $("#transitionText").text(text)
+    $("#mainScreen").attr("hidden",true )
+    if (currentQuestion < questions.length){
+        $("#transitionScreen").attr("hidden",false)
+        setTimeout(function(){
+            $("#mainScreen").attr("hidden",false )
+            $("#transitionScreen").attr("hidden",true)
+            startTimer()
+            getQuestion(currentQuestion)
+        },5000)
+    }
+
+    else {
+        
+        $("#transitionText").text("Game Over")
+        $("#transitionScreen").attr("hidden",false)
+        $("#correctAnswers").text(correctAnswers)
+        $("#incorrectAnswers").text(incorrectAnswers)
+        $("#unansweredQuestions").text(unansweredQuestions)
+        $("#resultsDiv").attr("hidden",false)
+        console.log("Game Over")
+    }
+    
 }
 
-getQuestion(0)
-$("button").on("click", function() {
-getQuestion(questionNumber)
-questionNumber++
+function startTimer (){
+    $("#timeLeft").text(timeLeft)
+    intervalID = setInterval(function(){
+        timeLeft--
+        $("#timeLeft").text(timeLeft)
+        if (timeLeft===0){
+            transition("Times up!")
+            unansweredQuestions++
+        }
+    },1000)
+
+
+}
+$("#startButton").on("click",function() {
+    $("#startBtnDiv").attr("hidden",true)
+    $("#mainScreen").attr("hidden", false)
+    startTimer()
 })
+getQuestion(currentQuestion)
+$(".answer-buttons").on("click", function (event) {
+    if (event.target.value === questions[currentQuestion].answer){
+        correctAnswers++ ;
+        transition("Thats Correct!")
+    }
+    else {
+        incorrectAnswers++;
+        transition("Thats Incorrect!")
+    }
+
+   
+    
+console.log(correctAnswers, incorrectAnswers) ;
+})
+
+
+
+// getQuestion(questionNumber)
+// questionNumber++

@@ -18,33 +18,47 @@
                 <h1 class="header text-center">Starwars Trivia</h1>
             </div>
         </div>
+        <div id="startBtnDiv" class="jumbotron col-md-8 col-center text-center bg-secondary mx-auto mt-5">
+            <button id="startButton" class="btn btn-lg w-50 mx-auto">Start</button>
+        </div>
         <div class="row">
-            <div class="jumbotron col-md-8 col-center bg-secondary mx-auto mt-5">
+            <div id="transitionScreen" class="jumbotron text-center col-md-8 col-center bg-secondary mx-auto mt-5"
+                hidden="hidden">
+                <h1 id="transitionText">Times up!</h1>
+                <div id="resultsDiv" hidden="hidden">
+                    <h2>Correct Answers: <span id="correctAnswers">0</span></h2>
+                    <h2>Incorrect Answers: <span id="incorrectAnswers">0</span></h2>
+                    <h2>Unanswered Questions: <span id="unansweredQuestions">0</span></h2>
+
+
+                </div>
+            </div>
+            <div id="mainScreen" class="jumbotron col-md-8 col-center bg-secondary mx-auto mt-5" hidden="hidden">
                 <div id="timeLeft" class="text-center">Time left</div>
                 <div class="question text-center" id="question"> Questions</div>
                 <div class="row  ab">
-                        <div class="col-md-6">
-                                <button class="btn btn-lg w-100 mx-auto bg-info answer-buttons" id="aButton">
-                                    A
-                                </button>
-                            </div>
-                            <div class="col-md-6">
-                                    <button class="btn btn-lg w-100 mx-auto bg-info answer-buttons" id="bButton">
-                                        B
-                                    </button>
-                                </div>
+                    <div class="col-md-6">
+                        <button value="A" class="btn btn-lg w-100 mx-auto bg-info answer-buttons" id="aButton">
+                            A
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button value="B" class="btn btn-lg w-100 mx-auto bg-info answer-buttons" id="bButton">
+                            B
+                        </button>
+                    </div>
                 </div>
                 <div class="row cd">
                     <div class="col-md-6">
-                        <button class="btn btn-lg w-100 mx-auto bg-info answer-buttons" id="cButton">
+                        <button value="C" class="btn btn-lg w-100 mx-auto bg-info answer-buttons" id="cButton">
                             C
                         </button>
                     </div>
                     <div class="col-md-6">
-                            <button class="btn btn-lg w-100 mx-auto bg-info answer-buttons" id="dButton">
-                                D
-                            </button>
-                        </div>
+                        <button value="D" class="btn btn-lg w-100 mx-auto bg-info answer-buttons" id="dButton">
+                            D
+                        </button>
+                    </div>
                 </div>
             </div>
 
