@@ -73,7 +73,7 @@ var currentQuestion = 0;
 var unansweredQuestions = 0;
 
 function getQuestion(questionNum) {
-    $("#question").text(questions[questionNum].Q)
+    $("#questionH").text(questions[questionNum].Q)
     $("#aButton").text(questions[questionNum].answers.A)
     $("#bButton").text(questions[questionNum].answers.B)
     $("#cButton").text(questions[questionNum].answers.C)
@@ -110,10 +110,10 @@ function transition(text){
 }
 
 function startTimer (){
-    $("#timeLeft").text(timeLeft)
+    $("#timeLeftH").text(timeLeft)
     intervalID = setInterval(function(){
         timeLeft--
-        $("#timeLeft").text(timeLeft)
+        $("#timeLeftH").text(timeLeft)
         if (timeLeft===0){
             transition("Times up!")
             unansweredQuestions++
