@@ -6,12 +6,46 @@ body {
     margin-top: 140px;
 }
 
+.header {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: .3rem
+}
+
 
 
 .answer-buttons {
-    border-style: solid;
+    border-style: outset;
     border-width: 2px;
     border-color: black;
     margin: 10px 0px;
 
+}
+#mainScreen {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: .3rem
+}
+
+#transitionScreen {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: .3rem
+}
+
+#startBtnDiv {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: .3rem
+}
+
+#startButton {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: .3rem
 }
